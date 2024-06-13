@@ -295,7 +295,7 @@ if (isset($_POST["updateKopi"])) {
                     <div class="form-group">
                         <label for="supplier">Supplier:</label>
                         <select class="form-control" name="supplier" id="supplier" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 10px;">
-                            <option selected value="<?php echo $kopifirst['id_suplier']; ?>"><?php echo $kopifirst['nama_supplier']; ?></option>
+                            <option selected value="<?php echo $kopifirst['id_supplier']; ?>"><?php echo $kopifirst['nama_supplier']; ?></option>
                             <?php while ($s = mysqli_fetch_array($suplier)) : ?>
 
                                 <option value="<?php echo $s['id']; ?>"><?php echo $s['nama_supplier']; ?></option>

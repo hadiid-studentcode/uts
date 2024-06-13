@@ -2,7 +2,7 @@
 // mengaktifkan session pada php
 session_start();
 // koneksi ke databasae
-$conn = mysqli_connect('localhost', 'root', '', 'coffee_hadiidandriyulison');
+$conn = mysqli_connect('localhost', 'root', '', 'test');
 
 
 // if(!$conn){
@@ -11,16 +11,7 @@ $conn = mysqli_connect('localhost', 'root', '', 'coffee_hadiidandriyulison');
 //     echo "Koneksi Berhasil";
 // }
 
-function query($query)
-{
-    global $conn;
-    $result = mysqli_query($conn, $query);
-    $row = [];
-    while ($row = mysqli_fetch_assoc($result)) {
-        $row[] = $row;
-    }
-    return $row;
-}
+
 
 function getSupplier()
 {
@@ -33,7 +24,7 @@ function getKopi()
 {
     global $conn;
     $result = mysqli_query($conn, "SELECT *,tabel_kopi.id as idkopi FROM `tabel_kopi`
-join tabel_supplier on tabel_kopi.id_suplier = tabel_supplier.id");
+join tabel_supplier on tabel_kopi.id_supplier = tabel_supplier.id");
     return $result;
 }
 
@@ -104,7 +95,7 @@ function updateKopi($data)
     $stok = ($data['stok']);
     $supplier = ($data['supplier']);
 
-    $query = "UPDATE tabel_kopi SET jenis = '$jenis',asal = '$asal',proses = '$proses',harga = '$harga',stok = '$stok',id_suplier = '$supplier' WHERE id = $id";
+    $query = "UPDATE tabel_kopi SET jenis = '$jenis',asal = '$asal',proses = '$proses',harga = '$harga',stok = '$stok',id_supplier = '$supplier' WHERE id = $id";
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
 }
@@ -117,7 +108,7 @@ function cariKopi($data)
 
     $query = "SELECT *,tabel_kopi.id as idkopi
 FROM tabel_kopi
-join tabel_supplier on tabel_kopi.id_suplier = tabel_supplier.id
+join tabel_supplier on tabel_kopi.id_supplier = tabel_supplier.id
 WHERE proses LIKE '%$keyword%'
 ";
 
@@ -130,7 +121,7 @@ WHERE proses LIKE '%$keyword%'
 
 function getKopiOrder(){
     global $conn;
-    $result = mysqli_query($conn, "SELECT *, tabel_kopi.id as idkopi FROM tabel_kopi join tabel_supplier on tabel_kopi.id_suplier = tabel_supplier.id  ORDER BY stok ASC  ");
+    $result = mysqli_query($conn, "SELECT *, tabel_kopi.id as idkopi FROM tabel_kopi join tabel_supplier on tabel_kopi.id_supplier = tabel_supplier.id  ORDER BY stok ASC  ");
     return $result;
 }
 
@@ -162,7 +153,7 @@ function getKopiFirst($id)
 {
     global $conn;
     $result = mysqli_query($conn, "SELECT *,tabel_kopi.id as idkopi FROM `tabel_kopi`
-join tabel_supplier on tabel_kopi.id_suplier = tabel_supplier.id WHERE tabel_kopi.id = $id");
+join tabel_supplier on tabel_kopi.id_supplier = tabel_supplier.id WHERE tabel_kopi.id = $id");
     return $result;
 }
 

@@ -5,6 +5,9 @@ $kopi = getKopi();
 $suplier = getSupplier();
 
 
+
+
+
 if (isset($_POST["tambahKopi"])) {
 
     // cek apakah data berhasil ditambahkan atau tidak
@@ -314,7 +317,7 @@ if (isset($_GET["cari"])) {
                     </div>
                     <div class="form-group">
                         <label for="supplier">Supplier:</label>
-                        <select class="form-control" name="supplier" id="supplier" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 10px;">
+                        <select class="form-control" name="supplier" id="supplier" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 10px;" required>
                             <?php while ($s = mysqli_fetch_array($suplier)) : ?>
                                 <option value="<?php echo $s['id']; ?>"><?php echo $s['nama_supplier']; ?></option>
 
@@ -373,6 +376,14 @@ if (isset($_GET["cari"])) {
                                 <?php $i = 1; ?>
                                 <?php while ($k = mysqli_fetch_array($kopi)) : ?>
                                     <tr>
+                                        <td><?php echo $i; ?></td>
+
+                                        <td><?php echo $k['jenis']; ?></td>
+                                        <td><?php echo $k['asal']; ?></td>
+                                        <td><?php echo $k['proses']; ?></td>
+                                        <td><?php echo $k['harga']; ?></td>
+                                        <td><?php echo $k['stok']; ?></td>
+                                        <td><?php echo $k['nama_supplier']; ?></td>
 
                                         <td>
                                             <button><a href="editKopi.php?editKopi=<?php echo $k['idkopi']; ?>" style="text-decoration: none;color: white">Edit</a></button>

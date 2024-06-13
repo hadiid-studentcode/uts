@@ -131,6 +131,7 @@ $getKopiOrder = getKopiOrder();
                         <td><?php echo $k['nama_supplier']; ?></td>
 
                     </tr>
+                    <?php $i++ ?>
 
                 <?php endwhile; ?>
 

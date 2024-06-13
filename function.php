@@ -2,7 +2,7 @@
 // mengaktifkan session pada php
 session_start();
 // koneksi ke databasae
-$conn = mysqli_connect('localhost', 'root', '', 'test');
+$conn = mysqli_connect('localhost', 'root', '', 'coffee_hadiidandriyulison');
 
 
 // if(!$conn){
